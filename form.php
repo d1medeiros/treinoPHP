@@ -5,6 +5,7 @@ include "conexao.php";
 include "banco_categorias.php";
 
 $categorias = buscaCategorias($conexao);
+$redes = buscaRede($conexao);
 
 ?>
 
@@ -27,11 +28,21 @@ $categorias = buscaCategorias($conexao);
 			<td>Categorias</td>
 			<td>
 				<?php foreach ($categorias as $categoria) : ?>
-					<input type="radio" name="categorias_id" value="<?= $categoria['categorias_id'] ?>">
+					<input type="radio" name="categorias_id" value="<?= $categoria['id'] ?>">
 						<?= $categoria['nome'] ?><br />
 					</input>
 				<?php endforeach ?>
 			</td>
+		</tr>
+		<tr>
+			<td>Rede</td>
+			<td>
+				<select name="id_rede" class="form-control">
+					<?php foreach ($redes as $rede) : ?>
+					<option value="<?= $rede['id']?>"><?= $rede['nome'] ?></option>
+					<?php endforeach ?>
+				</select>
+			</td>	
 		</tr>
 		<tr>
 			<td>Descrição:</td>

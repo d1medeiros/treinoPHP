@@ -10,9 +10,12 @@ include "banco_produto.php";
 $nome = $_POST["nome"];
 $preco = $_POST["preco"];
 $descricao = $_POST["descricao"];
+$categoria = $_POST["categorias_id"];
+$rede = $_POST["id_rede"];
 
 
-$inseriu = insere($conexao, $nome, $preco, $descricao);
+
+$inseriu = insere($conexao, $nome, $preco, $descricao, $categoria, $rede);
 
 if($inseriu){
 	header("location: form.php?inserido=true");

@@ -20,9 +20,11 @@ while($produto = mysqli_fetch_assoc($result)){
 	<?php foreach ($produtos as $p) { ?>
 
 	<tr>
-		<td><?= $p['nome'] ?></td>
+		<td><?= $p['vnome'] ?></td>
 		<td><?= $p['preco'] ?></td>
-		<td><?= substr($p['descricao'] , 0, 25) ?> ...</td>
+		<td><?= substr($p['descricao'] , 0, 25) ?></td>
+		<td><?= $p['cnome'] ?></td>
+		<td><?= $p['rnome']?></td>
 		<td>
 			<form action="remover.php" method="POST">
 				<input type="hidden" name="id" value="<?= $p['id'] ?>" />
