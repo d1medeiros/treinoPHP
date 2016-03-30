@@ -10,7 +10,7 @@ function insere($conexao, $nome, $preco, $descricao, $categoria, $rede){
 
 function buscaProdutos($conexao){
 	$query = "SELECT * FROM venda";
-	$query2 = "SELECT venda.id, venda.nome as vnome, venda.preco, venda.descricao, categorias.nome as cnome, rede.nome as rnome FROM venda INNER JOIN categorias ON venda.id_categoria = categorias.id INNER JOIN rede ON rede.id = venda.id_rede";
+	$query2 = "SELECT venda.id, venda.nome as vnome, venda.preco, venda.descricao, categorias.nome_c as cnome, rede.nome_r as rnome FROM venda INNER JOIN categorias ON venda.id_categoria = categorias.id_c INNER JOIN rede ON rede.id_r = venda.id_rede";
 	return mysqli_query($conexao, $query2);
 
 }

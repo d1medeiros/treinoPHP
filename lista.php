@@ -3,7 +3,9 @@
 include "cabecalho.php";
 include "conexao.php";
 include "banco_produto.php";
+include "logica_usuario.php";
 
+verificaUsuario();
 
 $produtos = array();
 $result = buscaProdutos($conexao);
@@ -12,9 +14,13 @@ while($produto = mysqli_fetch_assoc($result)){
 }
  ?>
 
-<?php if(array_key_exists("removido", $_GET) && $_GET['removido'] ==true){ ?>
-	<p class="alert-success"> removido com sucesso!</p>
-<?php } ?>
+<?php if(isset($_SESSION["success"])){ ?>
+	<p class="alert-success"><?= $_SESSION["success"] ?></p>
+<?php } unset($_SESSION["success"]); ?>
+
+<?php if(isset($_SESSION["danger"])){ ?>
+	<p class="alert-danger"><?= $_SESSION["danger"] ?></p>
+<?php } unset($_SESSION["danger"]); ?>
 
 <table class="table table-striped table-bordered">
 	<?php foreach ($produtos as $p) { ?>

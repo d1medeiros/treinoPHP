@@ -14,10 +14,9 @@
  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
+      <a class="navbar-brand" href="index.php">WebSiteName</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="index.php">Home</a></li>
       <li><a href="form.php">formulario</a></li>
       <li><a href="lista.php">lista</a></li> 
       <li><a href="#">Page 3</a></li> 

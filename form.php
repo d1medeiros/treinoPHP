@@ -3,15 +3,24 @@
 include "cabecalho.php"; 
 include "conexao.php";
 include "banco_categorias.php";
+include "logica_usuario.php";
 
 $categorias = buscaCategorias($conexao);
 $redes = buscaRede($conexao);
 
+
+verificaUsuario();
+
 ?>
 
-<?php if(array_key_exists("inserido", $_GET) && $_GET['inserido'] ==true){ ?>
-	<p class="alert-success"> adicionado com sucesso!</p>
-<?php } ?>
+<?php if(isset($_SESSION["success"])){ ?>
+	<p class="alert-success"> <?= $_SESSION["success"] ?> </p>
+<?php } unset($_SESSION["success"]); ?>
+
+<?php if(isset($_SESSION["danger"])){ ?>
+	<p class="alert-danger"> <?= $_SESSION["danger"] ?> </p>
+<?php } unset($_SESSION["danger"]); ?>
+
 
 
 <form action="insere.php" method="POST">
@@ -28,8 +37,8 @@ $redes = buscaRede($conexao);
 			<td>Categorias</td>
 			<td>
 				<?php foreach ($categorias as $categoria) : ?>
-					<input type="radio" name="categorias_id" value="<?= $categoria['id'] ?>">
-						<?= $categoria['nome'] ?><br />
+					<input type="radio" name="categorias_id" value="<?= $categoria['id_c'] ?>">
+						<?= $categoria['nome_c'] ?><br />
 					</input>
 				<?php endforeach ?>
 			</td>
@@ -39,7 +48,7 @@ $redes = buscaRede($conexao);
 			<td>
 				<select name="id_rede" class="form-control">
 					<?php foreach ($redes as $rede) : ?>
-					<option value="<?= $rede['id']?>"><?= $rede['nome'] ?></option>
+					<option value="<?= $rede['id_r']?>"><?= $rede['nome_r'] ?></option>
 					<?php endforeach ?>
 				</select>
 			</td>	
